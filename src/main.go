@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
 	"time"
@@ -55,6 +56,9 @@ func parseFile(lines [][]string) []problem {
 			ans:  strings.TrimSpace(line[1]),
 		}
 	}
+	rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(ret), func(i, j int) { ret[i], ret[j] = ret[j], ret[i] })
+
 	return ret
 }
 
