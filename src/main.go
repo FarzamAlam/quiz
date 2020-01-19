@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type problem struct {
@@ -40,8 +41,8 @@ func parseFile(lines [][]string) []problem {
 	ret := make([]problem, len(lines))
 	for i, line := range lines {
 		ret[i] = problem{
-			ques: line[0],
-			ans:  line[1],
+			ques: strings.TrimSpace(line[0]),
+			ans:  strings.TrimSpace(line[1]),
 		}
 	}
 	return ret
